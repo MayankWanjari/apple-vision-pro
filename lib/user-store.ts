@@ -43,11 +43,11 @@ type UserState = {
 
 const DEFAULT_USER: User = {
   id: 'user-1',
-  firstName: 'John',
-  lastName: 'Appleseed',
-  email: 'john.appleseed@icloud.com',
+  firstName: 'Mayank',
+  lastName: 'Wanjari',
+  email: 'mayankwanjari@gmail.com',
   phone: '+1 (408) 996-1010',
-  avatar: 'JA',
+  avatar: 'M',
   memberSince: 'March 2024',
 }
 
@@ -56,8 +56,8 @@ const DEFAULT_ADDRESSES: Address[] = [
     id: 'addr-1',
     label: 'Home',
     isDefault: true,
-    firstName: 'John',
-    lastName: 'Appleseed',
+    firstName: 'Mayank',
+    lastName: 'Wanjari',
     street: '1 Apple Park Way',
     city: 'Cupertino',
     state: 'CA',
@@ -95,6 +95,6 @@ export const useUser = create<UserState>()(
           addresses: s.addresses.map((a) => ({ ...a, isDefault: a.id === id })),
         })),
     }),
-    { name: 'vision-pro-user' }
+    { name: 'vision-pro-user-v2' }
   )
 )
