@@ -107,11 +107,6 @@ export default function ReviewPage() {
     addOrder(fullOrder)
 
     router.push('/checkout/success')
-
-    setTimeout(() => {
-      clearCart()
-      clearCheckout()
-    }, 100)
   }
 
   return (

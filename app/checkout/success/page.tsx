@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { gsap } from '@/lib/gsap'
+import { useCart } from '@/lib/cart-store'
+import { useCheckout } from '@/lib/checkout-store'
 
 type OrderData = {
   orderId: string
@@ -17,6 +19,8 @@ export default function SuccessPage() {
   const router = useRouter()
   const checkRef = useRef<HTMLDivElement>(null)
   const [order, setOrder] = useState<OrderData | null>(null)
+  const clearCart = useCart(s => s.clearCart)
+  const clearCheckout = useCheckout(s => s.clearCheckout)
 
   useEffect(() => {
     const raw = sessionStorage.getItem('vp-last-order')
@@ -26,10 +30,12 @@ export default function SuccessPage() {
     }
     try {
       setOrder(JSON.parse(raw) as OrderData)
+      clearCart()
+      clearCheckout()
     } catch {
       router.push('/')
     }
-  }, [router])
+  }, [router, clearCart, clearCheckout])
 
   useEffect(() => {
     if (!order || !checkRef.current) return
